@@ -1,0 +1,31 @@
+<style>
+    .btn1{
+        float: right;
+    }
+    .btn2{
+        float: left;
+    }
+    </style>
+{% extends 'info/base.html' %}
+
+{% block content %}
+    <h1><center>Register Resident</center></h1>
+    {% if submitted %}
+    <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+        <center><h2>Resident Registered Successfully</h2></center>
+        <br/> <br/>
+       <a class="btn1 btn btn-success" href="{% url 'registerresident' %}">Add Another Resident</a>
+        <a class="btn2 btn btn-primary" href="{% url 'residentrecords' %}">Home</a>
+
+    {% else %}
+        <form action="" method=POST>
+            {% csrf_token %}
+            {{form.as_p}}
+            <center><input type="submit" value="REGISTER" class="btn btn-success"></center>
+
+        </form>
+    
+    {% endif %}
+
+
+{% endblock %}

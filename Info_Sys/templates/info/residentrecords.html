@@ -1,0 +1,47 @@
+<style>
+    .btn{
+        float: right;
+    }
+    </style>
+{% extends 'info/base.html' %}
+
+{% block content %}
+    <h1><center>Resident Records</center></h1> 
+    
+    Welcome Kabarangay. 
+    
+     
+    <right><a class="btn btn-success" href="{% url 'registerresident' %}">Add a Resident</a></right>
+    <br/> <br/>
+       
+        <table class="table table-dark table-striped">
+            <thead>
+                <th>Resident ID</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Birthdate</th>
+                <th>Sex</th>
+                <th>Civil Status</th>
+                <th>Sitio</th>
+                <th> </th>
+                <th> </th>
+
+            </thead>
+            <tr>
+                {% for resident in resident_List %}
+                <td>{{resident.resID}}</td>
+                <td>{{resident.lastName}}</td>
+                <td>{{resident.firstName}}</td>
+                <td>{{resident.middleName}}</td>
+                <td>{{resident.birthday}}</td>
+                <td>{{resident.sex}}</td>
+                <td>{{resident.civilStatus}}</td>
+                <td>{{resident.sitio}}</td>
+                <td><a href="{% url 'editresident' resident.resID %}" class="btn btn-primary">Update</a></td>
+                <td><a href="{% url 'deleteresident' resident.resID %}" class="btn btn-danger">DELETE</a></td>
+            </tr>
+            
+            {% endfor %}
+        </table>
+{% endblock %}
